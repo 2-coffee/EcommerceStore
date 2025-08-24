@@ -1,0 +1,8 @@
+.env
+*.env
+*.db
+*.sql
+*.log
+target/
+*.iml
+.idea/

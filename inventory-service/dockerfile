@@ -1,0 +1,17 @@
+# Use a stable base image that supports ARM
+FROM eclipse-temurin:17-jdk
+
+# Create a non-root user (Debian-style)
+RUN groupadd spring && useradd -g spring spring
+
+# Set working directory
+WORKDIR /app
+
+# Copy the JAR file (make sure you build it first with Maven)
+COPY target/*.jar app.jar
+
+# Use the non-root user
+USER spring
+
+# Run the app
+ENTRYPOINT ["java", "-jar", "app.jar"]
